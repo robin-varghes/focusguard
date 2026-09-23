@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FocusGuard</string>
+    <string name="status_active">Active — Instagram is blocked.\nRemovable only from a computer via ADB.</string>
+    <string name="status_not_owner">Not yet set as Device Owner.\nRun the ADB command from the setup guide.</string>
+    <string name="btn_accessibility">Grant Accessibility Access</string>
+    <string name="accessibility_desc">Blocks Instagram by returning to the home screen when it is opened.</string>
+    <string name="removal_hint">To remove: connect to a computer and run\nadb shell dpm remove-active-admin com.block.instagramblocker/.AdminReceiver\nthen adb uninstall com.block.instagramblocker</string>
+</resources>
