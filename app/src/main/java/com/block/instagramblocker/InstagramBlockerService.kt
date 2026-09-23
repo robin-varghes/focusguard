@@ -28,6 +28,11 @@ class InstagramBlockerService : AccessibilityService() {
         }
     }
 
+    override fun onServiceConnected() {
+        super.onServiceConnected()
+        A11yGuard.startWatchdog(this)
+    }
+
     override fun onInterrupt() {
         // No-op.
     }
