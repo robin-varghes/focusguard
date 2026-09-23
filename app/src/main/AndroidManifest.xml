@@ -18,15 +18,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FocusGuard">
 
-        <!-- Main screen: visible in the launcher and app list (Option A). -->
         <activity
             android:name=".MainActivity"
+            android:exported="true" />
+
+        <!-- Disabled by default so Android 10+ doesn't synthesize an App Info icon.
+             Show it with: adb shell pm enable com.block.instagramblocker/.Launcher -->
+        <activity-alias
+            android:name=".Launcher"
+            android:targetActivity=".MainActivity"
+            android:enabled="false"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
+        </activity-alias>
 
         <!-- Device Admin / Device Owner receiver. -->
         <receiver
