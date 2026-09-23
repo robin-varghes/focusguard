@@ -12,9 +12,10 @@ head holds up later.
 ## What it does
 
 - **Blocks Instagram.** Whenever Instagram (or Instagram Lite) comes to the
-  front, FocusGuard sends the phone straight back to the home screen. This keeps
-  working even if Instagram is re-enabled from Settings or the Play Store, or
-  uninstalled and reinstalled.
+  front, FocusGuard sends the phone straight back to the home screen.
+- **Removes Instagram automatically.** If Instagram is installed, reinstalled
+  from the Play Store, or re-enabled, FocusGuard opens Android's uninstall dialog
+  and confirms it, so the app disappears within seconds.
 - **Stays invisible.** It has no icon in the home screen or app drawer and shows
   no notification.
 - **Turns itself back on.** If the FocusGuard switch under Settings →
@@ -40,7 +41,7 @@ head holds up later.
 
 | Component | Role |
 |---|---|
-| `InstagramBlockerService` | Accessibility service. Detects Instagram and FocusGuard's own control screens and presses Home. |
+| `InstagramBlockerService` | Accessibility service. Detects Instagram and FocusGuard's own control screens and presses Home; uninstalls Instagram when it is installed or enabled. |
 | `WatchdogService` | Foreground service that watches the Accessibility setting and re-enables the blocker when it is switched off. |
 | `A11yGuard` | Writes the Accessibility setting back (uses `WRITE_SECURE_SETTINGS`, granted once over USB). |
 | `BootReceiver` | Restarts the watcher after a reboot or an app update. |
@@ -53,6 +54,7 @@ head holds up later.
 | `WRITE_SECURE_SETTINGS` | Turning the blocker back on |
 | `FOREGROUND_SERVICE`, `FOREGROUND_SERVICE_SPECIAL_USE` | Keeping the watcher running |
 | `RECEIVE_BOOT_COMPLETED` | Starting after a reboot |
+| `REQUEST_DELETE_PACKAGES` | Opening the uninstall dialog for Instagram |
 | `QUERY_ALL_PACKAGES` | Looking up Instagram's package |
 
 ## Building
